@@ -38,6 +38,10 @@ const PokeCardStyles = StyleSheet.create({
         fontSize:20,
         textAlign:"center",
         textTransform:"capitalize"
+    },
+    secondaryContainer:{
+        backgroundColor:"#cfcfcf",
+        marginTop:20,
     }
 });
 

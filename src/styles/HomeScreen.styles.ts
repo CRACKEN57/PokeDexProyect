@@ -5,6 +5,7 @@ const HomeScreenStyles = StyleSheet.create({
         flex: 1, 
         backgroundColor: "#FFCC00", 
         padding: 20,
+        height:1000
     },
     scrollView: {
         flexGrow: 1, 

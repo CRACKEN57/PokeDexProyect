@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import PokeApi from "../api/PokeApi";
 import PokeCard from "../components/PokeCard";
-import { Pokemon } from "../types/Pokemon";
+import { Pokemon, PokemonAbility } from '../types/Pokemon';
 import HomeScreenStyles from "../styles/HomeScreen.styles";
+import PokeAbility from "../api/PokeTypes";
 
 const HomeScreens = () => {
   const [inputValue, setInputValue] = useState(""); 
@@ -18,16 +19,21 @@ const HomeScreens = () => {
 
   const fetchPokemon = async () => {
     try {
-      const id = PokemonId || Math.floor(Math.random() * 1000) + 1;
+      const id = PokemonId || Math.floor(Math.random() * 1025) + 1;
       const response = await PokeApi.get(`/${id}`);
 
+
+      console.log(response.data.types)
+      
       setPokemonData({
         id: response.data.id.toString(),
         name: response.data.name.toUpperCase(),
         image: response.data.sprites.front_default,
         type: response.data.types,
+        ability: response.data.abilities,
         shiny: response.data.sprites.front_shiny,
       });
+
     } catch (error) {
       console.error("Error obteniendo Pokémon", error);
       setInputValue("No se encontro el pokemon")
