@@ -1,12 +1,15 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { SafeAreaView, View } from 'react-native'
-import HomeScreens from './src/screen/HomeScreen'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import StackNavigator from './src/Navigation/stackNavigation'
 
 const App = () => {
   return (
-      <SafeAreaView>
-        <HomeScreens></HomeScreens>
-      </SafeAreaView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   )
 }
 

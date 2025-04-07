@@ -6,9 +6,9 @@ import { Pokemon, PokemonAbility } from '../types/Pokemon';
 import HomeScreenStyles from "../styles/HomeScreen.styles";
 import PokeAbility from "../api/PokeTypes";
 
-const HomeScreens = () => {
-  const [inputValue, setInputValue] = useState(""); 
-  const [PokemonId, setPokemonId] = useState(""); 
+const HomeScreens = ({ route }: any) => {
+  const [inputValue, setInputValue] = useState("");
+  const [PokemonId, setPokemonId] = useState("");
   const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const HomeScreens = () => {
 
 
       console.log(response.data.types)
-      
+
       setPokemonData({
         id: response.data.id.toString(),
         name: response.data.name.toUpperCase(),
@@ -41,36 +41,36 @@ const HomeScreens = () => {
   };
 
   return (
-    <ScrollView style={HomeScreenStyles.scrollView}>
-      <View style={HomeScreenStyles.container}>
-       
-        <TextInput
-          style={HomeScreenStyles.input}
-          placeholder="Ingresa el ID o nombre"
-          value={inputValue}
-          onChangeText={(text) => setInputValue(text.replace(/[^0-9a-zA-Z]/g, ""))} 
-        />
 
-        <Button
-          title="Buscar"
-          onPress={() => setPokemonId(inputValue)}
-          color="blue"
-        />
+    <View style={HomeScreenStyles.container}>
 
-        {pokemonData && <PokeCard Pokemon={pokemonData} />}
+      <TextInput
+        style={HomeScreenStyles.input}
+        placeholder="Ingresa el ID o nombre"
+        value={inputValue}
+        onChangeText={(text) => setInputValue(text.replace(/[^0-9a-zA-Z]/g, ""))}
+      />
 
-        <Pressable
-          onPress={() => {
-            const randomId = Math.floor(Math.random() * 1000) + 1;
-            setPokemonId(`${randomId}`);
-            setInputValue(`${randomId}`);
-          }}
-          style={HomeScreenStyles.pressable}
-        >
-          <Text style={HomeScreenStyles.title}>Pokémon Aleatorio</Text>
-        </Pressable>
-      </View>
-    </ScrollView>
+      <Button
+        title="Buscar"
+        onPress={() => setPokemonId(inputValue)}
+        color="blue"
+      />
+
+      {pokemonData && <PokeCard Pokemon={pokemonData} />}
+
+      <Pressable
+        onPress={() => {
+          const randomId = Math.floor(Math.random() * 1000) + 1;
+          setPokemonId(`${randomId}`);
+          setInputValue(`${randomId}`);
+        }}
+        style={HomeScreenStyles.pressable}
+      >
+        <Text style={HomeScreenStyles.title}>Pokémon Aleatorio</Text>
+      </Pressable>
+    </View>
+
   );
 };
 
