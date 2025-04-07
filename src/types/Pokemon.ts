@@ -1,11 +1,13 @@
 export interface PokemonType {
-    slot: number;
-    type: {
-        name: string;
-        url: string;
-    };
-}
+   sprites: {
+         "generation-ix": {
+              "scarlet-violet": {
+                name_icon: string;
+              };
+         }
+   }
 
+}
 export interface PokemonAbility{
     slot: number,
     ability:{
@@ -15,12 +17,19 @@ export interface PokemonAbility{
     isHidden: string;
 }
 
+export interface PokemonMoves{
+    moves:{
+        name:string;
+    }
+}
+
 export interface Pokemon {
     id: string;
     name: string;
     image: string;
     type: PokemonType[];
     ability: PokemonAbility[];
+    moves: PokemonMoves[];
     shiny: string;
 }
 

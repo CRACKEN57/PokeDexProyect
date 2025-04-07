@@ -42,7 +42,17 @@ const PokeCardStyles = StyleSheet.create({
     secondaryContainer:{
         backgroundColor:"#cfcfcf",
         marginTop:20,
-    }
+    },
+    imageType:{
+        width: 190,
+        height: 40,
+        borderRadius: 20,
+        marginBottom: 10,
+        marginTop:5,
+        marginRight:5,
+        alignSelf:"center"
+    },
+
 });
 
 export default PokeCardStyles;
